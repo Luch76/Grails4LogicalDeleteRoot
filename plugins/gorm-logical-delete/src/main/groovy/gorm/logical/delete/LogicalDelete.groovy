@@ -25,7 +25,8 @@ import static gorm.logical.delete.PreQueryListener.IGNORE_DELETED_FILTER
 
 @CompileStatic
 trait LogicalDelete<D> extends GormEntity<D> {
-    Boolean deleted = false
+    String deleted = null;
+    String id;
 
     static Object withDeleted(Closure closure) {
         final initialThreadLocalValue = IGNORE_DELETED_FILTER.get()
@@ -43,7 +44,7 @@ trait LogicalDelete<D> extends GormEntity<D> {
         } else {
             new DetachedCriteria(this).build {
                 eq 'id', id
-                eq 'deleted', false
+                isNull 'deleted'
             }.get()
         }
     }
@@ -54,7 +55,7 @@ trait LogicalDelete<D> extends GormEntity<D> {
         } else {
             new DetachedCriteria(this).build {
                 eq 'id', id
-                eq 'deleted', false
+                isNull 'deleted'
             }.get()
         }
     }
@@ -65,7 +66,7 @@ trait LogicalDelete<D> extends GormEntity<D> {
         } else {
             new DetachedCriteria(this).build {
                 eq 'id', id
-                eq 'deleted', false
+                isNull 'deleted'
             }.get()
         }
     }
@@ -76,14 +77,14 @@ trait LogicalDelete<D> extends GormEntity<D> {
         } else {
             new DetachedCriteria(this).build {
                 eq 'id', id
-                eq 'deleted', false
+                isNull 'deleted'
             }.get()
         }
     }
 
     void delete() {
-        this.markDirty('deleted', true, false)
-        this.deleted = true
+        this.markDirty('deleted', this.id, null)
+        this.deleted = this.id
         save()
     }
 
@@ -91,21 +92,21 @@ trait LogicalDelete<D> extends GormEntity<D> {
         if (params?.hard) {
             super.delete(params)
         } else {
-            this.markDirty('deleted', true, false)
-            this.deleted = true
+            this.markDirty('deleted', this.id, null)
+            this.deleted = this.id
             save(params)
         }
     }
 
     void unDelete() {
-        this.markDirty('deleted', false, true)
-        this.deleted = false
+        this.markDirty('deleted', null, this.id)
+        this.deleted = null
         save()
     }
 
     void unDelete(Map params) {
-        this.markDirty('deleted', false, true)
-        this.deleted = false
+        this.markDirty('deleted', null, this.id)
+        this.deleted = null
         save(params)
     }
 

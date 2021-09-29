@@ -14,7 +14,7 @@ class LuchGrails4LogDelController {
         respond luchGrails4LogDelService.list(params), model:[luchGrails4LogDelCount: luchGrails4LogDelService.count()]
     }
 
-    def show(Long id) {
+    def show(String id) {
         respond luchGrails4LogDelService.get(id)
     }
 
@@ -44,7 +44,7 @@ class LuchGrails4LogDelController {
         }
     }
 
-    def edit(Long id) {
+    def edit(String id) {
         respond luchGrails4LogDelService.get(id)
     }
 
@@ -70,7 +70,7 @@ class LuchGrails4LogDelController {
         }
     }
 
-    def delete(Long id) {
+    def delete(String id) {
         if (id == null) {
             notFound()
             return

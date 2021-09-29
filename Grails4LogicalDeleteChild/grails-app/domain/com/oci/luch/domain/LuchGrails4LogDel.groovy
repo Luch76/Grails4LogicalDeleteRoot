@@ -9,4 +9,8 @@ class LuchGrails4LogDel implements LogicalDelete<LuchGrails4LogDel> {
 
     static constraints = {
     }
+
+    static mapping = {
+        id generator: 'uuid'
+    }
 }

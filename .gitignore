@@ -18,7 +18,7 @@ target-eclipse/
 bin/
 !gradle/wrapper/gradle-wrapper.jar
 grails-app/conf/DataSource.groovy
-grails-app/conf/application.groovy
+#grails-app/conf/application.groovy
 db.properties
 
 ### STS ###
