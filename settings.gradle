@@ -1,0 +1,4 @@
+include ':Grails4LogicalDeleteChild'
+//include ':plugins:magic-number'
+include ':plugins:gorm-logical-delete'
+

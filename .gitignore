@@ -1,0 +1,41 @@
+Thumbs.db
+.DS_Store
+.gradle
+build/
+out/
+.idea
+*.iml
+*.ipr
+*.iws
+.project
+.settings
+.classpath
+
+HELP.md
+/build/
+target/
+target-eclipse/
+bin/
+!gradle/wrapper/gradle-wrapper.jar
+grails-app/conf/DataSource.groovy
+grails-app/conf/application.groovy
+db.properties
+
+### STS ###
+.apt_generated
+.factorypath
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+/out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
