@@ -38,7 +38,9 @@ class PreQueryListener implements ApplicationListener<PreQueryEvent> {
                 log.debug "This entity [${entity.javaClass}] implements logical delete"
 
                 if (!IGNORE_DELETED_FILTER.get()) {
-                    query.isNull('deleted')
+                    log.info("About to apply isnull filter");
+                    query.isNull('deleted');
+                    log.info("IsNull applied in listner")
                 }
             }
         } catch (Exception e) {

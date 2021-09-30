@@ -9,6 +9,25 @@ class LuchGrails4LogDelController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    def myDomainList() {
+        Integer listCount;
+        def list;
+
+        list = LuchGrails4LogDel.list();
+
+        render "List size ${list.size()}";
+    }
+
+    def myDomainFindAll() {
+        Integer listCount;
+        def list;
+
+        list = LuchGrails4LogDel.findAll();
+
+        render "List size ${list.size()}";
+    }
+
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond luchGrails4LogDelService.list(params), model:[luchGrails4LogDelCount: luchGrails4LogDelService.count()]
